@@ -3,7 +3,12 @@ type ConfigData = {
         blockSize: number,
         widht: number,
         height: number,
-        colorDiscretizationCount: number
+        color: {
+            discretization: number,
+            startColor: string,
+            endColor: string,
+            separationThreshold: number
+        }
     }
 }
 
@@ -12,6 +17,11 @@ export const configData: ConfigData = {
         blockSize: 2,
         widht: 400,
         height: 300,
-        colorDiscretizationCount: 255
+        color: {
+            discretization: 255,
+            startColor: "#d4c433",
+            endColor: "#136116",
+            separationThreshold: 130
+        }
     }
 }

@@ -13,7 +13,7 @@ export const createStartWindow = (ctx: CanvasRenderingContext2D | null, width: n
         for (let i = 0; i < map.length; i++) {
             for (let k = 0; k < map[i].length; k++) {
                 ctx.fillStyle = `#${createHexColor(map[i][k].getColor)}${createHexColor(map[i][k].getColor)}${createHexColor(map[i][k].getColor)}`;
-                ctx.fillRect((80 + i*configData.gameMap.blockSize), (80 + k*configData.gameMap.blockSize), configData.gameMap.blockSize, configData.gameMap.blockSize);
+                ctx.fillRect(i*configData.gameMap.blockSize, k*configData.gameMap.blockSize, configData.gameMap.blockSize, configData.gameMap.blockSize);
             }
         }
     }

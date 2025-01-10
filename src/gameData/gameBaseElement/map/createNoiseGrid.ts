@@ -20,7 +20,7 @@ const createNoiseGrid = (width: number, height: number, rate: number) => {
     for (let i = 0; i < newWidth; i++) {
         const column = []
         for (let k = 0; k < newHeight; k++) {
-            column.push(Math.random() * configData.gameMap.colorDiscretizationCount)
+            column.push(Math.random() * configData.gameMap.color.discretization)
         }
         smallGrid.push(column)
     }
@@ -86,3 +86,13 @@ export const averagingGrid = (map: GameBlock[][], divider: number, dimmer: numbe
     }
     return map
 }
+
+export const increaseContrast = (map: GameBlock[][], ratio: number) => {
+    for (let i = 0; i < map.length; i++) {
+        for (let k = 0; k < map[i].length; k++) {
+            const difference = Math.pow(1 - Math.abs(map[i][k].getColor - configData.gameMap.color.separationThreshold) / configData.gameMap.color.separationThreshold, ratio) * configData.gameMap.color.separationThreshold;
+            map[i][k].setColor = map[i][k].getColor > configData.gameMap.color.separationThreshold ? configData.gameMap.color.discretization - difference : difference
+        }
+    }
+    return map
+};
