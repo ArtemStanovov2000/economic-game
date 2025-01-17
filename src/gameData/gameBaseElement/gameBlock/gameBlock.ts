@@ -1,15 +1,15 @@
 export class GameBlock {
-    private color: number;
+    private colorHex
 
-    constructor(color: number) {
-        this.color = color;
+    constructor() {
+        this.colorHex = ""
     }
 
-    set setColor(value: number) {
-        this.color = value
+    setColorHex(value: string) {
+        this.colorHex = value
     }
 
-    get getColor() {
-        return this.color
+    getColorHex() {
+        return this.colorHex
     }
 }

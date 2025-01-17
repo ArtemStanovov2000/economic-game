@@ -7,16 +7,16 @@ const Canvas: FC = () => {
 
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
-        const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d')
+        const ctx: CanvasRenderingContext2D | null = canvas?.getContext('2d')
         createStartWindow(ctx, window.innerWidth, window.innerHeight);
         renderElement(ctx)
     }, [])
 
     return (
-        <canvas 
-        ref={canvasRef} 
-        width={window.innerWidth} 
-        height={window.innerHeight}>
+        <canvas
+            ref={canvasRef}
+            width={window.innerWidth}
+            height={window.innerHeight}>
         </canvas>
     )
 }

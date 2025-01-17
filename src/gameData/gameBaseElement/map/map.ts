@@ -1,11 +1,47 @@
-import { configData } from "../../gameInitialData/configData"
 import { GameBlock } from "../gameBlock/gameBlock"
-import { createPerlinNoise, createMap, averagingGrid, increaseContrast } from "./createNoiseGrid"
+import { Area } from "./area"
+import { configData } from "../../gameInitialData/configData"
 
-export const map: GameBlock[][] = []
+export class Map {
+    private area
+    private map: GameBlock[][]
 
-createMap(map, configData.gameMap.widht, configData.gameMap.height)
-createPerlinNoise(map, [25, 10, 5, 2], configData.gameMap.widht, configData.gameMap.height)
-averagingGrid(map, 9, 1.89, 20)
-increaseContrast(map, 70)
+    constructor() {
+        this.area = new Area()
+        this.map = []
+    }
+
+    createArea(width: number, height: number, average: number, contrast: number, startColor: string, endColor: string, discretization: number, rates: number[], separationThreshold: number) {
+        const square = this.area.createArea(width, height, average, contrast, startColor, endColor, discretization, rates, separationThreshold)
+        for (let i = 0; i < square.length; i++) {
+            const string: GameBlock[] = []
+            for (let j = 0; j < square[i].length; j++) {
+                const gameBlock = new GameBlock()
+                gameBlock.setColorHex(square[i][j])
+                string.push(gameBlock)
+            }
+            this.map.push(string)
+        }
+    }
+
+    getMap() {
+        return this.map
+    }
+}
+
+export const map = new Map()
+map.createArea(
+    configData.gameMap.widht, 
+    configData.gameMap.height, 
+    configData.gameMap.color.averageNumber, 
+    configData.gameMap.color.contrast, 
+    configData.gameMap.color.startColor, 
+    configData.gameMap.color.endColor, 
+    configData.gameMap.color.discretization, 
+    configData.gameMap.color.ratesNumber, 
+    configData.gameMap.color.separationThreshold
+)
+
+
+
 
