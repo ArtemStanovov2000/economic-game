@@ -12,14 +12,15 @@ type ConfigData = {
             contrast: number,
             ratesNumber:  number[]
         }
-    }
+    },
+    controls: object
 }
 
 export const configData: ConfigData = {
     gameMap: {
-        blockSize: 4,
-        widht: 400,
-        height: 300,
+        blockSize: 40,
+        widht: 400, //Только кратные 100 значение
+        height: 300, //Только кратные 100 значение
         color: {
             discretization: 255,
             startColor: "#374720",
@@ -29,5 +30,8 @@ export const configData: ConfigData = {
             contrast: 100,
             ratesNumber: [25, 10, 5, 2]
         }
+    },
+    controls: {
+
     }
 }

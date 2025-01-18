@@ -1,21 +1,25 @@
 import { GameBlock } from "../gameBlock/gameBlock"
 import { Area } from "./area"
+import { Control } from "./control"
 import { configData } from "../../gameInitialData/configData"
 
 export class Map {
-    private area
     private map: GameBlock[][]
+    area
+    control
 
     constructor() {
         this.area = new Area()
         this.map = []
+        this.control = new Control
     }
 
     createArea(width: number, height: number, average: number, contrast: number, startColor: string, endColor: string, discretization: number, rates: number[], separationThreshold: number) {
         const square = this.area.createArea(width, height, average, contrast, startColor, endColor, discretization, rates, separationThreshold)
-        for (let i = 0; i < square.length; i++) {
+        const coordinates = this.control.getIntoCenter()
+        for (let i = coordinates.widhtLeftIndex; i < coordinates.widhtRightIndex; i++) {
             const string: GameBlock[] = []
-            for (let j = 0; j < square[i].length; j++) {
+            for (let j = coordinates.heightTopIndex; j < coordinates.heightBottomIndex; j++) {
                 const gameBlock = new GameBlock()
                 gameBlock.setColorHex(square[i][j])
                 string.push(gameBlock)
@@ -41,7 +45,4 @@ map.createArea(
     configData.gameMap.color.ratesNumber, 
     configData.gameMap.color.separationThreshold
 )
-
-
-
 

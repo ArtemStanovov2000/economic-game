@@ -1,5 +1,9 @@
-import { map } from "../gameBaseElement/map/map"
+import { Map, map } from "../gameBaseElement/map/map"
 
-export const gameData = {
-    map: map.getMap()
+export type GameData = {
+    map: Map
+}
+
+export const gameData: GameData = {
+    map: map
 }
