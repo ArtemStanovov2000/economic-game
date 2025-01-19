@@ -1,14 +1,14 @@
 import { configData } from "../../gameInitialData/configData";
 
 export class Control {
-    private widhtLeftIndex: number
-    private widhtRightIndex: number
+    private widthLeftIndex: number
+    private widthRightIndex: number
     private heightTopIndex: number
     private heightBottomIndex: number
 
     constructor() {
-        this.widhtLeftIndex = 0
-        this.widhtRightIndex = 0
+        this.widthLeftIndex = 0
+        this.widthRightIndex = 0
         this.heightTopIndex = 0
         this.heightBottomIndex = 0
 
@@ -17,34 +17,34 @@ export class Control {
     getIntoCenter() {
         const widhtCount = Math.floor(window.innerWidth / configData.gameMap.blockSize) + 2
         const heightCount = Math.floor(window.innerHeight / configData.gameMap.blockSize) + 2
-        this.widhtLeftIndex = Math.floor((configData.gameMap.widht / 2) - widhtCount / 2)
-        this.widhtRightIndex = Math.floor((configData.gameMap.widht / 2) + widhtCount / 2)
+        this.widthLeftIndex = Math.floor((configData.gameMap.width / 2) - widhtCount / 2)
+        this.widthRightIndex = Math.floor((configData.gameMap.width / 2) + widhtCount / 2)
         this.heightTopIndex = Math.floor((configData.gameMap.height / 2) - heightCount / 2)
         this.heightBottomIndex = Math.floor((configData.gameMap.height / 2) + heightCount / 2)
-        return { widhtLeftIndex: this.widhtLeftIndex, widhtRightIndex: this.widhtRightIndex, heightTopIndex: this.heightTopIndex, heightBottomIndex: this.heightBottomIndex }
+        return { widthLeftIndex: this.widthLeftIndex, widthRightIndex: this.widthRightIndex, heightTopIndex: this.heightTopIndex, heightBottomIndex: this.heightBottomIndex }
     }
 
     moveLeft() {
-        if(this.widhtLeftIndex > 0) {
-            this.widhtLeftIndex = this.widhtLeftIndex - 1
-            this.widhtRightIndex = this.widhtRightIndex - 1
+        if(this.widthLeftIndex > 0) {
+            this.widthLeftIndex = this.widthLeftIndex - 1
+            this.widthRightIndex = this.widthRightIndex - 1
         }
         return { 
-            widhtLeftIndex: this.widhtLeftIndex, 
-            widhtRightIndex: this.widhtRightIndex, 
+            widthLeftIndex: this.widthLeftIndex, 
+            widthRightIndex: this.widthRightIndex, 
             heightTopIndex: this.heightTopIndex, 
             heightBottomIndex: this.heightBottomIndex 
         }
     }
 
     moveRight() {
-        if(this.widhtRightIndex < configData.gameMap.widht) {
-            this.widhtLeftIndex = this.widhtLeftIndex + 1
-            this.widhtRightIndex = this.widhtRightIndex + 1
+        if(this.widthRightIndex < configData.gameMap.width) {
+            this.widthLeftIndex = this.widthLeftIndex + 1
+            this.widthRightIndex = this.widthRightIndex + 1
         }
         return { 
-            widhtLeftIndex: this.widhtLeftIndex, 
-            widhtRightIndex: this.widhtRightIndex, 
+            widthLeftIndex: this.widthLeftIndex, 
+            widthRightIndex: this.widthRightIndex, 
             heightTopIndex: this.heightTopIndex, 
             heightBottomIndex: this.heightBottomIndex 
         }
@@ -56,8 +56,8 @@ export class Control {
             this.heightBottomIndex = this.heightBottomIndex - 1
         }
         return { 
-            widhtLeftIndex: this.widhtLeftIndex, 
-            widhtRightIndex: this.widhtRightIndex, 
+            widthLeftIndex: this.widthLeftIndex, 
+            widthRightIndex: this.widthRightIndex, 
             heightTopIndex: this.heightTopIndex, 
             heightBottomIndex: this.heightBottomIndex 
         }
@@ -69,8 +69,8 @@ export class Control {
             this.heightBottomIndex = this.heightBottomIndex + 1
         }
         return { 
-            widhtLeftIndex: this.widhtLeftIndex, 
-            widhtRightIndex: this.widhtRightIndex, 
+            widhtLeftIndex: this.widthLeftIndex, 
+            widhtRightIndex: this.widthRightIndex, 
             heightTopIndex: this.heightTopIndex, 
             heightBottomIndex: this.heightBottomIndex 
         }

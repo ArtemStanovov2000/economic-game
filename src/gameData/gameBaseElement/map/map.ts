@@ -17,7 +17,7 @@ export class Map {
     createArea(width: number, height: number, average: number, contrast: number, startColor: string, endColor: string, discretization: number, rates: number[], separationThreshold: number) {
         const square = this.area.createArea(width, height, average, contrast, startColor, endColor, discretization, rates, separationThreshold)
         const coordinates = this.control.getIntoCenter()
-        for (let i = coordinates.widhtLeftIndex; i < coordinates.widhtRightIndex; i++) {
+        for (let i = coordinates.widthLeftIndex; i < coordinates.widthRightIndex; i++) {
             const string: GameBlock[] = []
             for (let j = coordinates.heightTopIndex; j < coordinates.heightBottomIndex; j++) {
                 const gameBlock = new GameBlock()
@@ -35,7 +35,7 @@ export class Map {
 
 export const map = new Map()
 map.createArea(
-    configData.gameMap.widht, 
+    configData.gameMap.width, 
     configData.gameMap.height, 
     configData.gameMap.color.averageNumber, 
     configData.gameMap.color.contrast, 

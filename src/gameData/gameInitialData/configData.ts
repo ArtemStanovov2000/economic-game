@@ -1,7 +1,7 @@
 type ConfigData = {
     gameMap: {
         blockSize: number,
-        widht: number,
+        width: number,
         height: number,
         color: {
             discretization: number,
@@ -19,7 +19,7 @@ type ConfigData = {
 export const configData: ConfigData = {
     gameMap: {
         blockSize: 40,
-        widht: 400, //Только кратные 100 значение
+        width: 400, //Только кратные 100 значение
         height: 300, //Только кратные 100 значение
         color: {
             discretization: 255,
