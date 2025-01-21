@@ -1,35 +1,31 @@
 import { GameBlock } from "../gameBlock/gameBlock"
 import { Area } from "./area"
-import { Control } from "./control"
 import { configData } from "../../gameInitialData/configData"
 
 export class Map {
-    private map: GameBlock[][]
+    private fullMap: GameBlock[][]
     area
-    control
 
     constructor() {
         this.area = new Area()
-        this.map = []
-        this.control = new Control
+        this.fullMap = []
     }
 
     createArea(width: number, height: number, average: number, contrast: number, startColor: string, endColor: string, discretization: number, rates: number[], separationThreshold: number) {
         const square = this.area.createArea(width, height, average, contrast, startColor, endColor, discretization, rates, separationThreshold)
-        const coordinates = this.control.getIntoCenter()
-        for (let i = coordinates.widthLeftIndex; i < coordinates.widthRightIndex; i++) {
+        for (let i = 0; i < square.length; i++) {
             const string: GameBlock[] = []
-            for (let j = coordinates.heightTopIndex; j < coordinates.heightBottomIndex; j++) {
+            for (let j = 0; j < square[i].length; j++) {
                 const gameBlock = new GameBlock()
                 gameBlock.setColorHex(square[i][j])
                 string.push(gameBlock)
-            }
-            this.map.push(string)
+            } 
+            this.fullMap.push(string)
         }
     }
 
     getMap() {
-        return this.map
+        return this.fullMap
     }
 }
 

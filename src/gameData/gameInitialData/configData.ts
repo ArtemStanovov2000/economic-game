@@ -13,7 +13,13 @@ type ConfigData = {
             ratesNumber:  number[]
         }
     },
-    controls: object
+    controls: {
+        moveLeft: string
+        moveRight: string,
+        moveTop: string,
+        moveBottom: string,
+        moveCenter: string
+    }
 }
 
 export const configData: ConfigData = {
@@ -23,15 +29,19 @@ export const configData: ConfigData = {
         height: 300, //Только кратные 100 значение
         color: {
             discretization: 255,
-            startColor: "#374720",
+            startColor: "#374720", // Старторвый цвет светлее конечного
             endColor: "#152109",
-            separationThreshold: 130,
+            separationThreshold: 130, // Максимум 255
             averageNumber: 10,
             contrast: 100,
             ratesNumber: [25, 10, 5, 2]
         }
     },
     controls: {
-
+        moveLeft: "a",
+        moveRight: "d",
+        moveTop: "w",
+        moveBottom: "s",
+        moveCenter: "x"
     }
 }

@@ -14,7 +14,7 @@ export class Control {
 
     }
 
-    getIntoCenter() {
+    moveIntoCenter() {
         const widhtCount = Math.floor(window.innerWidth / configData.gameMap.blockSize) + 2
         const heightCount = Math.floor(window.innerHeight / configData.gameMap.blockSize) + 2
         this.widthLeftIndex = Math.floor((configData.gameMap.width / 2) - widhtCount / 2)
@@ -71,6 +71,15 @@ export class Control {
         return { 
             widhtLeftIndex: this.widthLeftIndex, 
             widhtRightIndex: this.widthRightIndex, 
+            heightTopIndex: this.heightTopIndex, 
+            heightBottomIndex: this.heightBottomIndex 
+        }
+    }
+
+    getCurrentLocation () {
+        return { 
+            widthLeftIndex: this.widthLeftIndex, 
+            widthRightIndex: this.widthRightIndex, 
             heightTopIndex: this.heightTopIndex, 
             heightBottomIndex: this.heightBottomIndex 
         }
