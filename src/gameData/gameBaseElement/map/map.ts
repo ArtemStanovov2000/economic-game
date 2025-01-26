@@ -24,6 +24,10 @@ export class Map {
         }
     }
 
+    fillRandomTreeValue() {
+
+    }
+
     getMap() {
         return this.fullMap
     }

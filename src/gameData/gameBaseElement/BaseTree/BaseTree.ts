@@ -1,7 +1,11 @@
 export class BaseTree {
     constructor () {}
 
-    getTree () {
-        return 4
-    }
+    createTree() {}
+
+    swingingFromWind () {}
+
+    growth () {}
+
+    cutDown () {}
 }

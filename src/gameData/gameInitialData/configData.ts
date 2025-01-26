@@ -14,7 +14,7 @@ type ConfigData = {
         }
     },
     controls: {
-        moveLeft: string
+        moveLeft: "a"
         moveRight: string,
         moveTop: string,
         moveBottom: string,
@@ -32,7 +32,7 @@ export const configData: ConfigData = {
             startColor: "#374720", // Старторвый цвет светлее конечного
             endColor: "#152109",
             separationThreshold: 130, // Максимум 255
-            averageNumber: 10,
+            averageNumber: 15,
             contrast: 100,
             ratesNumber: [25, 10, 5, 2]
         }
