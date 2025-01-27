@@ -1,4 +1,4 @@
-import { configData } from "../../gameInitialData/configData";
+import { configData } from "../../../gameInitialData/configData"
 
 export class Control {
     private widthLeftIndex: number

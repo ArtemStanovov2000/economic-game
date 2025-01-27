@@ -1,6 +1,6 @@
-import { GameBlock } from "../gameBlock/gameBlock"
+import { GameBlock } from "../../gameBlock/gameBlock"
 import { Area } from "./area"
-import { configData } from "../../gameInitialData/configData"
+import { configData } from "../../../gameInitialData/configData"
 
 export class Map {
     private fullMap: GameBlock[][]
@@ -17,7 +17,6 @@ export class Map {
             const string: GameBlock[] = []
             for (let j = 0; j < square[i].length; j++) {
                 const gameBlock = new GameBlock()
-                gameBlock.setColorHex(square[i][j])
                 string.push(gameBlock)
             } 
             this.fullMap.push(string)
@@ -30,6 +29,7 @@ export class Map {
 }
 
 export const map = new Map()
+console.log(map)
 map.createArea(
     configData.gameMap.width, 
     configData.gameMap.height, 
@@ -41,4 +41,5 @@ map.createArea(
     configData.gameMap.color.ratesNumber, 
     configData.gameMap.color.separationThreshold
 )
+
 

@@ -1,5 +1,5 @@
-import { Map, map } from "../gameBaseElement/map/map"
-import { Control } from "../gameBaseElement/map/control"
+import { Map, map } from "../gameBaseElement/AreaStructure/Map/Map"
+import { Control } from "../gameBaseElement/AreaStructure/Map/control"
 
 export type GameData = {
     map: Map,

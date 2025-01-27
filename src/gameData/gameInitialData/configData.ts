@@ -5,8 +5,6 @@ type ConfigData = {
         height: number,
         color: {
             discretization: number,
-            startColor: string,
-            endColor: string,
             separationThreshold: number,
             averageNumber: number,
             contrast: number,
@@ -28,10 +26,8 @@ export const configData: ConfigData = {
         width: 400, //Только кратные 100 значение
         height: 300, //Только кратные 100 значение
         color: {
-            discretization: 255,
-            startColor: "#374720", // Старторвый цвет светлее конечного
-            endColor: "#152109",
-            separationThreshold: 130, // Максимум 255
+            discretization: 100,
+            separationThreshold: 50, // Максимум 100
             averageNumber: 15,
             contrast: 100,
             ratesNumber: [25, 10, 5, 2]
