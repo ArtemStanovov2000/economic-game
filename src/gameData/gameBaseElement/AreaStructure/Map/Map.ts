@@ -3,43 +3,34 @@ import { Area } from "./area"
 import { configData } from "../../../gameInitialData/configData"
 
 export class Map {
-    private fullMap: GameBlock[][]
-    area
+    private area: GameBlock[][]
 
     constructor() {
-        this.area = new Area()
-        this.fullMap = []
+        this.area = []
     }
 
-    createArea(width: number, height: number, average: number, contrast: number, startColor: string, endColor: string, discretization: number, rates: number[], separationThreshold: number) {
-        const square = this.area.createArea(width, height, average, contrast, startColor, endColor, discretization, rates, separationThreshold)
-        for (let i = 0; i < square.length; i++) {
-            const string: GameBlock[] = []
-            for (let j = 0; j < square[i].length; j++) {
+    createArea(width: number, height: number) {
+        for (let i = 0; i < width; i++) {
+            const column = []
+            for (let k = 0; k < height; k++) {
                 const gameBlock = new GameBlock()
-                string.push(gameBlock)
-            } 
-            this.fullMap.push(string)
+                column.push(gameBlock)
+            }
+            this.area.push(column)
         }
     }
 
     getMap() {
-        return this.fullMap
+        return this.area
     }
 }
 
 export const map = new Map()
-console.log(map)
+const rr = map.getMap()
 map.createArea(
     configData.gameMap.width, 
     configData.gameMap.height, 
-    configData.gameMap.color.averageNumber, 
-    configData.gameMap.color.contrast, 
-    configData.gameMap.color.startColor, 
-    configData.gameMap.color.endColor, 
-    configData.gameMap.color.discretization, 
-    configData.gameMap.color.ratesNumber, 
-    configData.gameMap.color.separationThreshold
 )
+console.log(rr[45][23])
 
 

@@ -1,6 +1,6 @@
 export class GameBlock {
-    private colorHex
     private content: {
+        color: string,
         tree: {
             size: number,
             x: number,
@@ -15,8 +15,8 @@ export class GameBlock {
     }
 
     constructor() {
-        this.colorHex = ""
         this.content = {
+            color: "",
             tree: {
                 size: 0,
                 x: 0,
@@ -38,10 +38,10 @@ export class GameBlock {
     }
 
     setColorHex(value: string) {
-        this.colorHex = value
+        this.content.color = value
     }
 
     getColorHex() {
-        return this.colorHex
+        return this.content.color
     }
 }
