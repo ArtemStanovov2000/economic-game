@@ -31,6 +31,18 @@ export class GameBlock {
         }
     }
 
+    fillOil(value: number) {
+        this.content.resources.oil = value
+    }
+
+    fillGas(value: number) {
+        this.content.resources.gas = value
+    }
+
+    fillIron(value: number) {
+        this.content.resources.iron = value
+    }
+
     fillTree(size: number, x: number, y: number) {
         this.content.tree.size = size
         this.content.tree.x = x / 10 + 0.5
