@@ -7,6 +7,7 @@ export class PerlinNoise {
 
     createNoise(width: number, height: number, average: number, contrast: number, discretization: number, rates: number[], separationThreshold: number) {
 
+        //Создает изначальный пустой массив элементов заданых размеров
         const createArea = () => {
             for (let i = 0; i < width; i++) {
                 const column = []
@@ -20,6 +21,7 @@ export class PerlinNoise {
         }
         createArea()
 
+        //Генерирует одну гармонику шума перлина
         const createNoiseGrid = (rate: number) => {
             const newWidth = Math.round(width / rate)
             const newHeight = Math.round(height / rate)
@@ -44,6 +46,7 @@ export class PerlinNoise {
             return grid
         }
 
+        //Накладывает гармоники шума перлина
         const createAllGrid = () => {
             const allGrid: number[][][] = []
             for (let i = 0; i < rates.length; i++) {
@@ -62,6 +65,7 @@ export class PerlinNoise {
         }
         createAllGrid()
 
+        //Усредняет шум, беря значения соседних ячеек и усредняя с текущей
         const averagingGrid = () => {
             for (let i = 0; i < average; i++) {
                 for (let i = 1; i < width - 1; i++) {
@@ -84,6 +88,7 @@ export class PerlinNoise {
         }
         averagingGrid()
 
+        //Делает светлые ячейки светлее, темные темнее
         const increaseContrast = () => {
             for (let i = 0; i < width; i++) {
                 for (let k = 0; k < height; k++) {
