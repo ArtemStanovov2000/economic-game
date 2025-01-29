@@ -55,13 +55,27 @@ export class Map {
         }
     }
 
+    fillingTree(average: number, contrast: number, discretization: number, rates: number[], separationThreshold: number) {
+        const treeArea: number[][] = this.treeChance.createNoise(this.width, this.height, average, contrast, discretization, rates, separationThreshold)
+        for (let i = 0; i < treeArea.length; i++) {
+            for (let k = 0; k < treeArea[i].length; k++) {
+                const randomNumber = Math.random() * 100
+                if(randomNumber < treeArea[i][k]) {
+                    const randomX = Math.random()
+                    const randomY = Math.random()
+                    const size = Math.random()
+                    this.area[i][k].fillTree(size, randomX, randomY)
+                }
+            }
+        }
+    }
+
     getMap() {
         return this.area
     }
 }
 
 export const map = new Map(configData.gameMap.width, configData.gameMap.height)
-const rr = map.getMap()
 map.createArea()
 
 const oilChanceMap = configData.gameMap.resources.oilChance
@@ -72,6 +86,9 @@ map.fillingGas(gasChanceMap.averageNumber, gasChanceMap.contrast, gasChanceMap.d
 
 const ironChanceMap = configData.gameMap.resources.ironChance
 map.fillingIron(ironChanceMap.averageNumber, ironChanceMap.contrast, ironChanceMap.discretization, ironChanceMap.ratesNumber, ironChanceMap.separationThreshold)
-console.log(rr)
+
+const treeChanceMap = configData.gameMap.resources.treeChance
+map.fillingTree(treeChanceMap.averageNumber, treeChanceMap.contrast, treeChanceMap.discretization, treeChanceMap.ratesNumber, treeChanceMap.separationThreshold)
+
 
 
