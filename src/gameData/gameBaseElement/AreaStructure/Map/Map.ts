@@ -61,11 +61,19 @@ export class Map {
             for (let k = 0; k < treeArea[i].length; k++) {
                 const randomNumber = Math.random() * 100
                 if(randomNumber < treeArea[i][k]) {
-                    const randomX = Math.random()
-                    const randomY = Math.random()
-                    const size = Math.random()
-                    this.area[i][k].fillTree(size, randomX, randomY)
+                    const randomX = Math.random() / 10
+                    const randomY = Math.random() / 10
+                    const size = Math.random() * 5
+                    this.area[i][k].tree.setTree(size, randomX, randomY)
                 }
+            }
+        }
+    }
+
+    fillingColor(value: string) {
+        for (let i = 0; i < this.width; i++) {
+            for (let k = 0; k < this.height; k++) {
+                this.area[i][k].setColorHex(value)
             }
         }
     }
@@ -89,6 +97,8 @@ map.fillingIron(ironChanceMap.averageNumber, ironChanceMap.contrast, ironChanceM
 
 const treeChanceMap = configData.gameMap.resources.treeChance
 map.fillingTree(treeChanceMap.averageNumber, treeChanceMap.contrast, treeChanceMap.discretization, treeChanceMap.ratesNumber, treeChanceMap.separationThreshold)
+
+map.fillingColor(configData.gameMap.colorGameBlock)
 
 
 

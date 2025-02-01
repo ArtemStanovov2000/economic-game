@@ -226,7 +226,8 @@ export const firContour = {
                 yStart: 0.9294,
             },
         ],
-        color: "#2fc3d6"
+        color: "#105712",
+        fill: "#1b751e"
     },
     lines: [
         [

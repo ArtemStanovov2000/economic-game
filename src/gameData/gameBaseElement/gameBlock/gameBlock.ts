@@ -1,11 +1,9 @@
+import { Fir } from "../Tree/Fir/fir"
+
 export class GameBlock {
+    tree: Fir
     private content: {
         color: string,
-        tree: {
-            size: number,
-            x: number,
-            y: number
-        },
         infrastructureFacility: null,
         resources: {
             oil: number,
@@ -15,13 +13,9 @@ export class GameBlock {
     }
 
     constructor() {
+        this.tree = new Fir()
         this.content = {
             color: "",
-            tree: {
-                size: 0,
-                x: 0,
-                y: 0
-            },
             infrastructureFacility: null,
             resources: {
                 oil: 0,
@@ -41,12 +35,6 @@ export class GameBlock {
 
     fillIron(value: number) {
         this.content.resources.iron = value
-    }
-
-    fillTree(size: number, x: number, y: number) {
-        this.content.tree.size = size
-        this.content.tree.x = x / 10 + 0.5
-        this.content.tree.y = y / 10 + 0.5
     }
 
     setColorHex(value: string) {

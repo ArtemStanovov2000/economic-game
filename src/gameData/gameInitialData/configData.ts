@@ -3,6 +3,7 @@ type ConfigData = {
         blockSize: number,
         width: number,
         height: number,
+        colorGameBlock: string,
         resources: {
             treeChance: {
                 discretization: number,
@@ -48,6 +49,7 @@ export const configData: ConfigData = {
         blockSize: 40,
         width: 400, //Только кратные 100 значение
         height: 300, //Только кратные 100 значение
+        colorGameBlock: "#3f914c",
         resources: {
             treeChance: {
                 discretization: 100,
