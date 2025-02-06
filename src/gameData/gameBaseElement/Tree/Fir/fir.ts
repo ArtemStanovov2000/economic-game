@@ -32,7 +32,7 @@ export class Fir {
                     );
                 }
                 ctx.lineTo(
-                    firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize + (Math.sin(frameIndex / 15 * this.size) * 0.15 * firContourSlice[i].yStart),
+                    firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize + (Math.sin(frameIndex / 3 * (1 / this.size)) * 0.15 * firContourSlice[i].yStart),
                     firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize
                 );
                 if (i === firContourSlice.length - 1) {
