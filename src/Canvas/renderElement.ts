@@ -2,11 +2,8 @@ import { GameData } from "../gameData/gameInitialData/initialData"
 import { Viewport } from "./Viewport"
 import { configData } from "../gameData/gameInitialData/configData"
 import { control } from "./rerender/control/control"
-import { firContour } from "../gameData/gameBaseElement/Tree/Fir/firContour"
 
-console.log(firContour)
-
-export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: GameData, viewport: Viewport, key: string) => {
+export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: GameData, viewport: Viewport, key: string, frameIndex: number) => {
     control(key, gameData)
 
     const arrayMap = viewport.getMap(gameData.control.getCurrentLocation())
@@ -24,7 +21,7 @@ export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: Ga
 
     for (let i = 0; i < arrayMap.length; i++) {
         for (let j = 0; j < arrayMap[i].length; j++) {
-            arrayMap[i][j].tree.drawTree(ctx, i, j)
+            arrayMap[i][j].tree.drawTree(ctx, i, j, frameIndex)
         }
     }
 }

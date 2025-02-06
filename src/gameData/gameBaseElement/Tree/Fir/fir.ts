@@ -18,11 +18,9 @@ export class Fir {
         this.y = y
     }
 
-    drawTree(ctx: CanvasRenderingContext2D | null, xIndex: number, yIndex: number) {
+    drawTree(ctx: CanvasRenderingContext2D | null, xIndex: number, yIndex: number, frameIndex: number) {
         const blockSize = configData.gameMap.blockSize
-        const firContourSlice = firContour.contour.points.slice()
-        const firLineSlice = firContour.lines.slice()
-
+        const firContourSlice = structuredClone(firContour.contour.points)
 
         if (ctx !== null) {
             for (let i = 0; i < firContourSlice.length; i++) {
@@ -34,7 +32,7 @@ export class Fir {
                     );
                 }
                 ctx.lineTo(
-                    firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize,
+                    firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize + (Math.sin(frameIndex / 15 * this.size) * 0.15 * firContourSlice[i].yStart),
                     firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize
                 );
                 if (i === firContourSlice.length - 1) {
@@ -46,20 +44,20 @@ export class Fir {
                 }
             }
 
-            for (let i = 0; i < firLineSlice.length; i++) {
-                for (let j = 0; j < firLineSlice[i].length; j++) {
+            for (let i = 0; i < firContour.lines.length; i++) {
+                for (let j = 0; j < firContour.lines[i].length; j++) {
                     if (j === 0) {
                         ctx.beginPath();
                         ctx.moveTo(
-                            firLineSlice[i][0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize,
-                            firLineSlice[i][0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize
+                            firContour.lines[i][0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize,
+                            firContour.lines[i][0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize
                         );
                     }
                     ctx.lineTo(
-                        firLineSlice[i][j].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize,
-                        firLineSlice[i][j].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize
+                        firContour.lines[i][j].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize,
+                        firContour.lines[i][j].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize
                     );
-                    if (j === firLineSlice[i].length - 1) {
+                    if (j === firContour.lines[i].length - 1) {
                         ctx.strokeStyle = firContour.contour.color;
                         ctx.stroke();
                     }

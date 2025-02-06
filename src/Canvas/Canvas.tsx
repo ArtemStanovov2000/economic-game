@@ -30,7 +30,7 @@ const Canvas: FC = () => {
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
         const ctx: CanvasRenderingContext2D | null = canvas?.getContext('2d')
-        renderElement(ctx, gameData, viewport, key)
+        renderElement(ctx, gameData, viewport, key, frameIndex)
     }, [frameIndex])
 
     return (
