@@ -78,6 +78,14 @@ export class Map {
         }
     }
 
+    fillingId() {
+        for (let i = 0; i < this.width; i++) {
+            for (let k = 0; k < this.height; k++) {
+                this.area[i][k].setId(`${i}&${k}`)
+            }
+        }
+    }
+
     getMap() {
         return this.area
     }
@@ -99,6 +107,8 @@ const treeChanceMap = configData.gameMap.resources.treeChance
 map.fillingTree(treeChanceMap.averageNumber, treeChanceMap.contrast, treeChanceMap.discretization, treeChanceMap.ratesNumber, treeChanceMap.separationThreshold)
 
 map.fillingColor(configData.gameMap.colorGameBlock)
+
+map.fillingId()
 
 
 

@@ -21,4 +21,8 @@ export class Viewport {
         }
         return array
     }
+
+    getLeftTopBlockIndex(coordinates = gameData.control.getCurrentLocation()) {
+        return {x: coordinates.widthLeftIndex, y: coordinates.heightTopIndex}
+    }
 }

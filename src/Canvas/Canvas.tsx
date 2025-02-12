@@ -8,6 +8,7 @@ const Canvas: FC = () => {
 
     const [frameIndex, setFrameIndex] = useState(1);
     const [key, setKey] = useState("");
+    const [coords, setCoords] = useState({ x: 0, y: 0 })
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -27,16 +28,24 @@ const Canvas: FC = () => {
         setKey("")
     }
 
+    const onMouseMove = (e) => {
+        setCoords({
+            x: e.clientX - e.target.offsetLeft,
+            y: e.clientY - e.target.offsetTop,
+        })
+    }
+
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
         const ctx: CanvasRenderingContext2D | null = canvas?.getContext('2d')
-        renderElement(ctx, gameData, viewport, key, frameIndex)
+        renderElement(ctx, gameData, viewport, key, frameIndex, coords)
     }, [frameIndex])
 
     return (
         <div tabIndex={0} onKeyDown={keyDown} onKeyUp={keyUp}>
             <canvas
                 ref={canvasRef}
+                onMouseMove={onMouseMove}
                 width={window.innerWidth}
                 height={window.innerHeight}>
             </canvas>

@@ -2,6 +2,7 @@ import { Fir } from "../Tree/Fir/fir"
 
 export class GameBlock {
     tree: Fir
+    id: string
     private content: {
         color: string,
         infrastructureFacility: null,
@@ -14,6 +15,7 @@ export class GameBlock {
 
     constructor() {
         this.tree = new Fir()
+        this.id = ""
         this.content = {
             color: "",
             infrastructureFacility: null,
@@ -39,6 +41,10 @@ export class GameBlock {
 
     setColorHex(value: string) {
         this.content.color = value
+    }
+
+    setId(value: string) {
+        this.id = value
     }
 
     getColorHex() {
