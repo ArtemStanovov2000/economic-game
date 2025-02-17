@@ -25,10 +25,8 @@ export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: Ga
         const letfTopIndex = viewport.getLeftTopBlockIndex()
         const xOffset = Math.floor(coords.x / configData.gameMap.blockSize)
         const yOffset = Math.floor(coords.y / configData.gameMap.blockSize)
-        return {xIndex: letfTopIndex.x + xOffset, yIndex: letfTopIndex.y + yOffset}
+        return { xIndex: letfTopIndex.x + xOffset, yIndex: letfTopIndex.y + yOffset }
     }
-
-    console.log(determineBlockCoordinates(coords))
 
     for (let i = 0; i < arrayMap.length; i++) {
         for (let j = 0; j < arrayMap[i].length; j++) {
