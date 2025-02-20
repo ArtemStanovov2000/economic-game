@@ -1,7 +1,6 @@
 import { FC, useRef, RefObject, useEffect, useState } from "react"
 import { renderElement } from "./renderElement"
 import { gameData } from "../gameData/gameInitialData/initialData"
-import { Viewport } from "./Viewport"
 
 const Canvas: FC = () => {
     const canvasRef: RefObject<HTMLCanvasElement> = useRef<HTMLCanvasElement>(null)
@@ -13,12 +12,10 @@ const Canvas: FC = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setFrameIndex(frameIndex => frameIndex + 1);
-        }, 40);
+        }, 16);
 
         return () => clearInterval(timer);
     });
-
-    const viewport = new Viewport()
 
     const keyDown = (e) => {
         setKey(e.key)
@@ -38,7 +35,9 @@ const Canvas: FC = () => {
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
         const ctx: CanvasRenderingContext2D | null = canvas?.getContext('2d')
-        renderElement(ctx, gameData, viewport, key, frameIndex, coords)
+        console.time("g")
+        renderElement(ctx, gameData, key, frameIndex, coords)
+        console.timeEnd("g")
     }, [frameIndex])
 
     return (

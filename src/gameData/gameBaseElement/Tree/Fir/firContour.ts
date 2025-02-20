@@ -194,22 +194,6 @@ export const firContour = {
                 yStart: 0.2545,
             },
             {
-                xStart: -1.7257,
-                yStart: 0.438,
-            },
-            {
-                xStart: -1.8953,
-                yStart: 0.4768,
-            },
-            {
-                xStart: -2.387,
-                yStart: 0.1568,
-            },
-            {
-                xStart: -2.913,
-                yStart: 0.1568,
-            },
-            {
                 xStart: -2.913,
                 yStart: 0.4025,
             },
@@ -442,20 +426,6 @@ export const firContour = {
             {
                 xStart: -1.1704,
                 yStart: 4.8055,
-            },
-        ],
-        [
-            {
-                xStart: -0.8490,
-                yStart: 4.8065,
-            },
-            {
-                xStart: -0.7611,
-                yStart: 3.7886,
-            },
-            {
-                xStart: -0.2544,
-                yStart: 4.5430,
             },
         ],
         [
@@ -850,20 +820,6 @@ export const firContour = {
         ],
         [
             {
-                xStart: 0.0246,
-                yStart: 9.2012,
-            },
-            {
-                xStart: 0.2768,
-                yStart: 8.7156,
-            },
-            {
-                xStart: 0.3060,
-                yStart: 9.1382,
-            }
-        ],
-        [
-            {
                 xStart: 0.6519,
                 yStart: 8.9292,
             },
@@ -876,66 +832,5 @@ export const firContour = {
                 yStart: 8.9292,
             }
         ],
-        [
-            {
-                xStart: -0.1986,
-                yStart: 9.7462,
-            },
-            {
-                xStart: -0.1040,
-                yStart: 9.7104,
-            },
-            {
-                xStart: -0.0681,
-                yStart: 9.5555,
-            },
-            {
-                xStart: 0.0477,
-                yStart: 9.5278,
-            },
-            {
-                xStart: 0.1483,
-                yStart: 9.5540,
-            },
-            {
-                xStart: 0.2580,
-                yStart: 9.7315,
-            },
-            {
-                xStart: 0.3644,
-                yStart: 9.6658,
-            },
-            {
-                xStart: 0.2580,
-                yStart: 9.7315,
-            },
-        ],
-        [
-            {
-                xStart: -0.2460,
-                yStart: 9.8014,
-            },
-            {
-                xStart: -0.0023,
-                yStart: 10.3758,
-            },
-            {
-                xStart: -0.2460,
-                yStart: 9.8014,
-            },
-        ],
-        [
-            {
-                xStart: -0.0072,
-                yStart: 10.2030,
-            },
-            {
-                xStart: 0.2151,
-                yStart: 9.8129,
-            },
-            {
-                xStart: 0.2151,
-                yStart: 10.1519,
-            },
-        ]]
+        ]
 }

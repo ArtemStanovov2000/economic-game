@@ -1,12 +1,26 @@
 import { GameData } from "../gameData/gameInitialData/initialData"
-import { Viewport } from "./Viewport"
 import { configData } from "../gameData/gameInitialData/configData"
 import { control } from "./rerender/control/control"
+import { GameBlock } from "../gameData/gameBaseElement/gameBlock/gameBlock"
 
-export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: GameData, viewport: Viewport, key: string, frameIndex: number, coords: { x: number, y: number }) => {
+export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: GameData, key: string, frameIndex: number) => {
     control(key, gameData)
 
-    const arrayMap = viewport.getMap(gameData.control.getCurrentLocation())
+    const rrr = (map: GameBlock[][], coordinates = gameData.control.getCurrentLocation()) => {
+        const width = coordinates.widthRightIndex - coordinates.widthLeftIndex
+        const height = coordinates.heightBottomIndex - coordinates.heightTopIndex
+        const array = []
+        for (let i = 0; i < width; i++) {
+            const string = []
+            for (let j = 0; j < height; j++) {
+                string.push(map[i + coordinates.widthLeftIndex][j + coordinates.heightTopIndex])
+            }
+            array.push(string)
+        }
+        return array
+    }
+
+    const arrayMap = rrr(gameData.map.getMap(), gameData.control.getCurrentLocation())
     for (let i = 0; i < arrayMap.length; i++) {
         for (let j = 0; j < arrayMap[i].length; j++) {
             if (ctx !== null) {
@@ -21,16 +35,11 @@ export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: Ga
         }
     }
 
-    const determineBlockCoordinates = (coords: { x: number, y: number }) => {
-        const letfTopIndex = viewport.getLeftTopBlockIndex()
-        const xOffset = Math.floor(coords.x / configData.gameMap.blockSize)
-        const yOffset = Math.floor(coords.y / configData.gameMap.blockSize)
-        return { xIndex: letfTopIndex.x + xOffset, yIndex: letfTopIndex.y + yOffset }
-    }
-
     for (let i = 0; i < arrayMap.length; i++) {
         for (let j = 0; j < arrayMap[i].length; j++) {
-            arrayMap[i][j].tree.drawTree(ctx, i, j, frameIndex)
+            if(arrayMap[i][j].tree.getSize() > 0) {
+                arrayMap[i][j].tree.drawTree(ctx, i, j)
+            }
         }
     }
 }

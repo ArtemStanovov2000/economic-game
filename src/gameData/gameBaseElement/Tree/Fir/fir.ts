@@ -1,5 +1,7 @@
 import { firContour } from "./firContour";
+//import { firContourLite } from "./firContourLite";
 import { configData } from "../../../gameInitialData/configData";
+import { firContourLite } from "./firContourLite";
 
 export class Fir {
     private size: number
@@ -18,11 +20,16 @@ export class Fir {
         this.y = y
     }
 
-    drawTree(ctx: CanvasRenderingContext2D | null, xIndex: number, yIndex: number, frameIndex: number) {
-        const blockSize = configData.gameMap.blockSize
-        const firContourSlice = structuredClone(firContour.contour.points)
+    getSize() {
+        return this.size
+    }
 
-        if (ctx !== null) {
+    drawTree(ctx: CanvasRenderingContext2D | null, xIndex: number, yIndex: number) {
+        const blockSize = configData.gameMap.blockSize
+        const firContourSlice = firContour.contour.points
+        const firContourLiteSlice = firContourLite.contour.points
+
+        if (this.size > 4 && ctx !== null) {
             for (let i = 0; i < firContourSlice.length; i++) {
                 if (i === 0) {
                     ctx.beginPath();
@@ -61,6 +68,48 @@ export class Fir {
                         ctx.strokeStyle = firContour.contour.color;
                         ctx.stroke();
                     }
+                }
+            }
+        } else if (this.size < 2 && ctx !== null) {
+            for (let i = 0; i < firContourLiteSlice.length; i++) {
+                if (i === 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(
+                        Math.floor(firContourLiteSlice[0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
+                        Math.floor(firContourLiteSlice[0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                    );
+                }
+                ctx.lineTo(
+                    Math.floor(firContourLiteSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
+                    Math.floor(firContourLiteSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                );
+                if (i === firContourLiteSlice.length - 1) {
+                    ctx.strokeStyle = firContourLite.contour.color;
+                    ctx.closePath();
+                    ctx.fillStyle = firContourLite.contour.fill;
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        } else if(ctx !== null) {
+            for (let i = 0; i < firContourSlice.length; i++) {
+                if (i === 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(
+                        Math.floor(firContourSlice[0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
+                        Math.floor(firContourSlice[0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                    );
+                }
+                ctx.lineTo(
+                    Math.floor(firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
+                    Math.floor(firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                );
+                if (i === firContourSlice.length - 1) {
+                    ctx.strokeStyle = firContour.contour.color;
+                    ctx.closePath();
+                    ctx.fillStyle = firContour.contour.fill;
+                    ctx.fill();
+                    ctx.stroke();
                 }
             }
         }
