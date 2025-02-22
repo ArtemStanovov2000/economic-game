@@ -1,15 +1,17 @@
 import { GameBlock } from "../../gameBlock/gameBlock"
 import { PerlinNoise } from "./PerlinNoise"
 import { configData } from "../../../gameInitialData/configData"
+import { Fir } from "../../Tree/Fir/fir"
 
 export class Map {
     private width: number
     private height: number
     private area: GameBlock[][]
-    private treeChance = new PerlinNoise
-    private oilChance = new PerlinNoise
-    private gasChance = new PerlinNoise
-    private ironChance = new PerlinNoise
+    private treeChance = new PerlinNoise()
+    private oilChance = new PerlinNoise()
+    private colorMap = new PerlinNoise()
+    private gasChance = new PerlinNoise()
+    private ironChance = new PerlinNoise()
 
     constructor(width: number, height: number) {
         this.area = []
@@ -37,6 +39,22 @@ export class Map {
         }
     }
 
+    fillingColor(average: number, contrast: number, discretization: number, rates: number[], separationThreshold: number) {
+        const colorArea: number[][] = this.colorMap.createNoise(this.width, this.height, average, contrast, discretization, rates, separationThreshold)
+        console.log(colorArea)
+        for (let i = 0; i < colorArea.length; i++) {
+            for (let k = 0; k < colorArea[i].length; k++) {
+                if (colorArea[i][k] < 33) {
+                    this.area[i][k].setColorHex("#3db51f")
+                } else if (colorArea[i][k] >= 33 && colorArea[i][k] < 66) {
+                    this.area[i][k].setColorHex("#3aad1d")
+                } else {
+                    this.area[i][k].setColorHex("#36a61b")
+                }
+            }
+        }
+    }
+
     fillingGas(average: number, contrast: number, discretization: number, rates: number[], separationThreshold: number) {
         const gasArea: number[][] = this.gasChance.createNoise(this.width, this.height, average, contrast, discretization, rates, separationThreshold)
         for (let i = 0; i < gasArea.length; i++) {
@@ -60,20 +78,15 @@ export class Map {
         for (let i = 0; i < treeArea.length; i++) {
             for (let k = 0; k < treeArea[i].length; k++) {
                 const randomNumber = Math.random() * 100
-                if(randomNumber < treeArea[i][k]) {
+                if (randomNumber < treeArea[i][k]) {
                     const randomX = Math.random() / 10
                     const randomY = Math.random() / 10
                     const size = Math.random() * 5
-                    this.area[i][k].tree.setTree(size, randomX, randomY)
+                    this.area[i][k].content = new Fir()
+                    if(this.area[i][k].content?.type === "fir") {
+                        this.area[i][k].content.setTree(size, randomX, randomY)
+                    }
                 }
-            }
-        }
-    }
-
-    fillingColor(value: string) {
-        for (let i = 0; i < this.width; i++) {
-            for (let k = 0; k < this.height; k++) {
-                this.area[i][k].setColorHex(value)
             }
         }
     }
@@ -106,7 +119,8 @@ map.fillingIron(ironChanceMap.averageNumber, ironChanceMap.contrast, ironChanceM
 const treeChanceMap = configData.gameMap.resources.treeChance
 map.fillingTree(treeChanceMap.averageNumber, treeChanceMap.contrast, treeChanceMap.discretization, treeChanceMap.ratesNumber, treeChanceMap.separationThreshold)
 
-map.fillingColor(configData.gameMap.colorGameBlock)
+const colorMap = configData.gameMap.mapColor
+map.fillingColor(colorMap.averageNumber, colorMap.contrast, colorMap.discretization, colorMap.ratesNumber, colorMap.separationThreshold)
 
 map.fillingId()
 

@@ -3,14 +3,14 @@ export const firContourLite = {
         points: [
             {
                 xStart: -3.6787,
-                yStart: 0.8009,
+                yStart: 0.6115,
             },
             {
-                xStart: 0.009,
+                xStart: 0,
                 yStart: 10.6978,
             },
             {
-                xStart: 3.3052,
+                xStart: 3.6787,
                 yStart: 0.6115,
             },
         ],

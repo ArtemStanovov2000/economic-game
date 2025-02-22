@@ -7,11 +7,13 @@ export class Fir {
     private size: number
     private x: number
     private y: number
+    type: string
 
     constructor() {
         this.size = 0
         this.x = 0
         this.y = 0
+        this.type = "fir"
     }
 
     setTree(size: number, x: number, y: number) {
@@ -35,12 +37,12 @@ export class Fir {
                     ctx.beginPath();
                     ctx.moveTo(
                         Math.floor(firContourSlice[0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                        Math.floor(firContourSlice[0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                        Math.floor(firContourSlice[0].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                     );
                 }
                 ctx.lineTo(
                     Math.floor(firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                    Math.floor(firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                    Math.floor(firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                 );
                 if (i === firContourSlice.length - 1) {
                     ctx.strokeStyle = firContour.contour.color;
@@ -57,12 +59,12 @@ export class Fir {
                         ctx.beginPath();
                         ctx.moveTo(
                             Math.floor(firContour.lines[i][0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                            Math.floor(firContour.lines[i][0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                            Math.floor(firContour.lines[i][0].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                         );
                     }
                     ctx.lineTo(
                         Math.floor(firContour.lines[i][j].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                        Math.floor(firContour.lines[i][j].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                        Math.floor(firContour.lines[i][j].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                     );
                     if (j === firContour.lines[i].length - 1) {
                         ctx.strokeStyle = firContour.contour.color;
@@ -76,12 +78,12 @@ export class Fir {
                     ctx.beginPath();
                     ctx.moveTo(
                         Math.floor(firContourLiteSlice[0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                        Math.floor(firContourLiteSlice[0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                        Math.floor(firContourLiteSlice[0].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                     );
                 }
                 ctx.lineTo(
                     Math.floor(firContourLiteSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                    Math.floor(firContourLiteSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                    Math.floor(firContourLiteSlice[i].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                 );
                 if (i === firContourLiteSlice.length - 1) {
                     ctx.strokeStyle = firContourLite.contour.color;
@@ -97,12 +99,12 @@ export class Fir {
                     ctx.beginPath();
                     ctx.moveTo(
                         Math.floor(firContourSlice[0].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                        Math.floor(firContourSlice[0].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                        Math.floor(firContourSlice[0].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                     );
                 }
                 ctx.lineTo(
                     Math.floor(firContourSlice[i].xStart * this.size + (xIndex - 0.5 + this.x) * blockSize),
-                    Math.floor(firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.5 + this.y) * blockSize)
+                    Math.floor(firContourSlice[i].yStart * this.size * -1 + (yIndex - 0.3 + this.y) * blockSize)
                 );
                 if (i === firContourSlice.length - 1) {
                     ctx.strokeStyle = firContour.contour.color;

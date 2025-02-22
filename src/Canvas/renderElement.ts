@@ -37,8 +37,11 @@ export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: Ga
 
     for (let i = 0; i < arrayMap.length; i++) {
         for (let j = 0; j < arrayMap[i].length; j++) {
-            if(arrayMap[i][j].tree.getSize() > 0) {
-                arrayMap[i][j].tree.drawTree(ctx, i, j)
+            switch (arrayMap[i][j].content?.type) {
+                case null:
+                    break;
+                case "fir":
+                    arrayMap[i][j].content.drawTree(ctx, i, j);
             }
         }
     }

@@ -5,6 +5,13 @@ type ConfigData = {
         height: number,
         colorGameBlock: string,
         colorGameBlockHover: string,
+        mapColor: {
+            discretization: number,
+            separationThreshold: number,
+            averageNumber: number,
+            contrast: number,
+            ratesNumber: number[]
+        },
         resources: {
             treeChance: {
                 discretization: number,
@@ -52,6 +59,13 @@ export const configData: ConfigData = {
         height: 300, //Только кратные 100 значение
         colorGameBlock: "#3f914c",
         colorGameBlockHover: "#4bb35c",
+        mapColor: {
+            discretization: 100,
+            separationThreshold: 50, // Максимум 100
+            averageNumber: 15,
+            contrast: 20,
+            ratesNumber: [5, 2]
+        },
         resources: {
             treeChance: {
                 discretization: 100,
