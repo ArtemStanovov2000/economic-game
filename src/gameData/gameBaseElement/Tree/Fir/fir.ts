@@ -26,12 +26,12 @@ export class Fir {
         return this.size
     }
 
-    drawTree(ctx: CanvasRenderingContext2D | null, xIndex: number, yIndex: number) {
+    drawTree(ctx: CanvasRenderingContext2D | null | undefined, xIndex: number, yIndex: number) {
         const blockSize = configData.gameMap.blockSize
         const firContourSlice = firContour.contour.points
         const firContourLiteSlice = firContourLite.contour.points
 
-        if (this.size > 4 && ctx !== null) {
+        if (this.size > 4 && ctx) {
             for (let i = 0; i < firContourSlice.length; i++) {
                 if (i === 0) {
                     ctx.beginPath();
@@ -72,7 +72,7 @@ export class Fir {
                     }
                 }
             }
-        } else if (this.size < 2 && ctx !== null) {
+        } else if (this.size < 2 && ctx) {
             for (let i = 0; i < firContourLiteSlice.length; i++) {
                 if (i === 0) {
                     ctx.beginPath();
@@ -93,7 +93,7 @@ export class Fir {
                     ctx.stroke();
                 }
             }
-        } else if(ctx !== null) {
+        } else if(ctx) {
             for (let i = 0; i < firContourSlice.length; i++) {
                 if (i === 0) {
                     ctx.beginPath();

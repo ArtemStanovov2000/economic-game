@@ -62,7 +62,7 @@ export const configData: ConfigData = {
         mapColor: {
             discretization: 100,
             separationThreshold: 50, // Максимум 100
-            averageNumber: 15,
+            averageNumber: 2,
             contrast: 20,
             ratesNumber: [5, 2]
         },

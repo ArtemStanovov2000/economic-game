@@ -2,8 +2,9 @@ import { GameData } from "../gameData/gameInitialData/initialData"
 import { configData } from "../gameData/gameInitialData/configData"
 import { control } from "./rerender/control/control"
 import { GameBlock } from "../gameData/gameBaseElement/gameBlock/gameBlock"
+//import { workers } from "../gameData/gameInitialData/initialData"
 
-export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: GameData, key: string, frameIndex: number) => {
+export const renderElement = (ctx: CanvasRenderingContext2D | null | undefined, gameData: GameData, key: string) => {
     control(key, gameData)
 
     const rrr = (map: GameBlock[][], coordinates = gameData.control.getCurrentLocation()) => {
@@ -20,10 +21,18 @@ export const renderElement = (ctx: CanvasRenderingContext2D | null, gameData: Ga
         return array
     }
 
+    console.log(gameData.coordinates.getCoordinates())
+
+    /*workers.viewportWorker.postMessage({ message: gameData.number })
+
+    workers.viewportWorker.onmessage = function (e) {
+        console.log(e.data)
+    }*/
+
     const arrayMap = rrr(gameData.map.getMap(), gameData.control.getCurrentLocation())
     for (let i = 0; i < arrayMap.length; i++) {
         for (let j = 0; j < arrayMap[i].length; j++) {
-            if (ctx !== null) {
+            if (ctx) {
                 ctx.fillStyle = arrayMap[i][j].getColorHex();
                 ctx.fillRect(
                     configData.gameMap.blockSize * i - configData.gameMap.blockSize,
