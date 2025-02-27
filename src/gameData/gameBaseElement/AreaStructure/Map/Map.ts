@@ -2,6 +2,7 @@ import { GameBlock } from "../../gameBlock/gameBlock"
 import { PerlinNoise } from "./PerlinNoise"
 import { configData } from "../../../gameInitialData/configData"
 import { Fir } from "../../Tree/Fir/fir"
+import { Asphalt } from "../../Road/Asphalt/Asphalt"
 
 export class Map {
     private width: number
@@ -41,7 +42,6 @@ export class Map {
 
     fillingColor(average: number, contrast: number, discretization: number, rates: number[], separationThreshold: number) {
         const colorArea: number[][] = this.colorMap.createNoise(this.width, this.height, average, contrast, discretization, rates, separationThreshold)
-        console.log(colorArea)
         for (let i = 0; i < colorArea.length; i++) {
             for (let k = 0; k < colorArea[i].length; k++) {
                 if (colorArea[i][k] < 33) {
@@ -84,7 +84,7 @@ export class Map {
                     const size = Math.random() * 5
                     this.area[i][k].content = new Fir()
                     if(this.area[i][k].content?.type === "fir") {
-                        this.area[i][k].content.setTree(size, randomX, randomY)
+                        this.area[i][k].content?.setTree(size, randomX, randomY)
                     }
                 }
             }
@@ -97,6 +97,10 @@ export class Map {
                 this.area[i][k].setId(`${i}&${k}`)
             }
         }
+    }
+
+    setContentGameBlock(i: number, k: number, type: Fir | Asphalt) {
+        this.area[i][k].content = type
     }
 
     getMap() {
@@ -123,6 +127,12 @@ const colorMap = configData.gameMap.mapColor
 map.fillingColor(colorMap.averageNumber, colorMap.contrast, colorMap.discretization, colorMap.ratesNumber, colorMap.separationThreshold)
 
 map.fillingId()
+
+for (let i = 0; i < 70; i++) {
+    map.setContentGameBlock(170 + i, 150, new Asphalt())
+}
+
+
 
 
 

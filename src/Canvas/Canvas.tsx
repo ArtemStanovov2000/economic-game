@@ -34,9 +34,9 @@ const Canvas: FC = () => {
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
         const ctx: CanvasRenderingContext2D | null | undefined = canvas?.getContext('2d')
-        //console.time("g")
+        console.time("g")
         renderElement(ctx, gameData, key)
-        //console.timeEnd("g")
+        console.timeEnd("g")
     }, [frameIndex])
 
     return (

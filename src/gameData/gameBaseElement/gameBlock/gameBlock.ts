@@ -1,4 +1,5 @@
 import { Fir } from "../Tree/Fir/fir"
+import { Asphalt } from "../Road/Asphalt/Asphalt"
 
 export class GameBlock {
     id: string
@@ -8,7 +9,7 @@ export class GameBlock {
         iron: number,
         gas: number
     }
-    content: null | Fir
+    content: null | Fir | Asphalt
 
     constructor() {
         this.id = ""

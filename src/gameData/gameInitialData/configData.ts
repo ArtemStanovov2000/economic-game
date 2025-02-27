@@ -1,6 +1,9 @@
 type ConfigData = {
     gameMap: {
-        blockSize: number,
+        blockSize: {
+            width: number,
+            height: number
+        },
         width: number,
         height: number,
         colorGameBlock: string,
@@ -54,7 +57,10 @@ type ConfigData = {
 
 export const configData: ConfigData = {
     gameMap: {
-        blockSize: 40,
+        blockSize: {
+            width: 40,
+            height: 28
+        },
         width: 400, //Только кратные 100 значение
         height: 300, //Только кратные 100 значение
         colorGameBlock: "#3f914c",
@@ -69,7 +75,7 @@ export const configData: ConfigData = {
         resources: {
             treeChance: {
                 discretization: 100,
-                separationThreshold: 50, // Максимум 100
+                separationThreshold: 55, // Максимум 100
                 averageNumber: 15,
                 contrast: 100,
                 ratesNumber: [25, 10, 5, 2]
